@@ -1,0 +1,308 @@
+
+/* =========================
+   ITC EVENTS PAGE
+========================= */
+
+.events-page {
+    min-height: 100vh;
+    background: #080808;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+
+.itc-navbar {
+    width: 100%;
+    min-height: 80px;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #050505;
+    border-bottom: 1px solid #222;
+}
+
+.itc-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.itc-logo span {
+    color: #ed1c24;
+}
+
+.itc-logo-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ed1c24;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.itc-navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.itc-navbar nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.itc-navbar nav a:hover,
+.itc-navbar nav a.active {
+    color: #ed1c24;
+}
+
+.itc-navbar nav .join-nav {
+    background: #ed1c24;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 25px;
+}
+
+.itc-navbar nav .join-nav:hover {
+    background: #c91018;
+}
+
+/* EVENTS HERO */
+
+.events-hero {
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    background:
+        radial-gradient(circle at center, rgba(237, 28, 36, 0.15), transparent 60%),
+        #080808;
+}
+
+.events-hero .subtitle {
+    color: #ed1c24;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.events-hero h1 {
+    font-size: clamp(40px, 7vw, 75px);
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.events-hero h1 span {
+    color: #ed1c24;
+}
+
+.events-hero p {
+    max-width: 600px;
+    color: #aaa;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* EVENTS SECTION */
+
+.events-section {
+    padding: 70px 7%;
+}
+
+.events-section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.events-section-heading h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.events-section-heading h2 span {
+    color: #ed1c24;
+}
+
+.events-section-heading p {
+    color: #999;
+    font-size: 15px;
+}
+
+/* EVENTS GRID */
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* EVENT CARD */
+
+.event-card {
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 15px;
+    padding: 30px;
+    transition: 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-7px);
+    border-color: #ed1c24;
+    box-shadow: 0 10px 30px rgba(237, 28, 36, 0.1);
+}
+
+.event-date {
+    display: inline-block;
+    padding: 7px 13px;
+    background: rgba(237, 28, 36, 0.12);
+    color: #ed1c24;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.event-card h3 {
+    font-size: 23px;
+    margin-bottom: 13px;
+}
+
+.event-card p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.event-category {
+    color: #ed1c24;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* BUTTON */
+
+.event-button {
+    display: inline-block;
+    padding: 11px 22px;
+    background: #ed1c24;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.event-button:hover {
+    background: #c91018;
+    transform: translateY(-2px);
+}
+
+/* JOIN SECTION */
+
+.events-join {
+    margin: 40px 7% 80px;
+    padding: 55px 25px;
+    text-align: center;
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 18px;
+}
+
+.events-join h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.events-join h2 span {
+    color: #ed1c24;
+}
+
+.events-join p {
+    color: #aaa;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+.itc-footer {
+    padding: 35px 7%;
+    background: #050505;
+    border-top: 1px solid #222;
+    text-align: center;
+}
+
+.itc-footer p {
+    color: #888;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+    .itc-navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .itc-navbar nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .events-section {
+        padding: 50px 20px;
+    }
+
+    .events-section-heading h2 {
+        font-size: 29px;
+    }
+
+    .events-join h2 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 400px) {
+    .itc-navbar nav {
+        gap: 12px;
+    }
+
+    .itc-navbar nav a {
+        font-size: 12px;
+    }
+
+    .event-card {
+        padding: 22px;
+    }
+}
