@@ -4,9 +4,18 @@ const OpenAI = require("openai");
 
 const router = express.Router();
 
-const client = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
+let client;
+
+function getClient() {
+    if (!client) {
+        client = new OpenAI({
+            baseURL: "https://openrouter.ai/api/v1",
+            apiKey: process.env.OPENROUTER_API_KEY
+        });
+    }
+
+    return client;
+}
 
 const systemPrompt = `
 You are the official AI assistant of ITC Club
@@ -36,7 +45,8 @@ the club administrators.
 
 router.post("/", async (req, res) => {
     try {
-        if (!process.env.OPENAI_API_KEY) {
+        if (!process.env.OPENROUTER_API_KEY ||
+            !process.env.OPENROUTER_MODEL) {
             return res.status(503).json({
                 success: false,
                 message: "AI assistant is not configured."
@@ -53,42 +63,43 @@ router.post("/", async (req, res) => {
         }
 
         const conversation = messages
-        .slice(-12)
-        .filter(
-            (msg) =>
-            ["user", "assistant"].includes(msg.role) &&
-            typeof msg.content === "string" &&
-            msg.content.trim().length > 0 &&
-            msg.content.length <= 2000
-        )
-        .map((msg) => ({
-            role: msg.role,
-            content: msg.content.trim()
-        }));
+            .slice(-12)
+            .filter((msg) =>
+                ["user", "assistant"].includes(msg.role) &&
+                typeof msg.content === "string" &&
+                msg.content.trim().length > 0 &&
+                msg.content.length <= 2000
+            )
+            .map((msg) => ({
+                role: msg.role,
+                content: msg.content.trim()
+            }));
 
-        if (!conversation.length ||
-            !conversation.some((msg) => msg.role === "user")) {
+        if (
+            !conversation.length ||
+            !conversation.some((msg) => msg.role === "user")
+        ) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid conversation."
             });
-            }
+        }
 
-            const completion = await client.chat.completions.create({
-                model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-                messages: [
-                    { role: "system", content: systemPrompt },
-                    ...conversation
-                ],
-                max_tokens: 500
-            });
+        const completion = await getClient().chat.completions.create({
+            model: process.env.OPENROUTER_MODEL,
+            messages: [
+                { role: "system", content: systemPrompt },
+                ...conversation
+            ],
+            max_tokens: 500
+        });
 
-            const reply = completion.choices[0]?.message?.content;
+        const reply = completion.choices[0]?.message?.content;
 
-            return res.json({
-                success: true,
-                reply: reply || "Sorry, I couldn't generate an answer."
-            });
+        return res.json({
+            success: true,
+            reply: reply || "Sorry, I couldn't generate an answer."
+        });
 
     } catch (error) {
         console.error("Chat error:", error.message);
