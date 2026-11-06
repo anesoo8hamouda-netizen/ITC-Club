@@ -1,4 +1,10 @@
+const path = require("path");
 
+require("dotenv").config({
+    path: path.join(__dirname, "../.env")
+});
+
+const chatRoutes = require("./routes/chat");
 const express = require("express");
 const cors = require("cors");
 
@@ -11,7 +17,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
+app.use("/api/chat", chatRoutes);
 app.get("/api/health", (req, res) => {
     res.json({
         success: true,
